@@ -2,10 +2,83 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мой первый сайт</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Антология</title>
+    <style>
+        /* Здесь мы наводим красоту (CSS) */
+        body {
+            margin: 0;
+            padding: 0;
+            /* Временный темный деревянный фон из интернета + затемнение */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif; /* Простой шрифт без засечек */
+            
+            /* Делаем так, чтобы всё было по центру экрана */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 4em; /* Огромный размер */
+            letter-spacing: 20px; /* Расстояние между буквами */
+            margin: 0;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            letter-spacing: 8px;
+            margin: 20px 0 40px 0;
+            font-weight: normal;
+        }
+
+        .status {
+            font-size: 1em;
+            color: #cccccc; /* Слегка сероватый цвет */
+            margin-bottom: 60px;
+        }
+
+        /* Рисуем три полосочки */
+        .lines {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Расстояние между линиями */
+        }
+
+        .line {
+            width: 150px;
+            height: 2px;
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Привет, мир!</h1>
-    <p>Это мой личный сайт на GitHub. Полет нормальный, товарищ!</p>
+
+    <img src="https://via.placeholder.com/150/000000/FFFFFF/?text=LOGO" alt="Логотип" class="logo">
+
+    <h1>АНТОЛОГИЯ</h1>
+    
+    <h2>(МОНСТРЫ, ПОЛУЛЮДИ И<br>ЧЕЛОВЕКОПОДОБНЫЕ)</h2>
+    
+    <p class="status">(Находится в процессе написания)</p>
+
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
 </body>
 </html>
