@@ -24,7 +24,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             width: 90%;
-            max-width: 400px;
+            max-width: 450px; /* Немного шире для рекламы */
             z-index: 10;
         }
 
@@ -47,11 +47,70 @@
             box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
             transition: all 0.2s;
             width: 100%;
+            margin-bottom: 30px; /* Отступ до рекламы */
         }
 
         #download-btn:hover { background-color: #357ABD; transform: translateY(-2px); }
 
         .download-icon { width: 22px; height: 22px; fill: currentColor; }
+
+        /* !!! НОВЫЙ БЛОК РЕКЛАМЫ !!! */
+        .ads-section {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            text-align: left;
+        }
+
+        .ads-header {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            margin-left: 5px;
+        }
+
+        .ads-line {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            flex-wrap: wrap; /* Для мобильных */
+        }
+
+        .ad-item {
+            flex: 1 1 calc(33.33% - 10px);
+            max-width: 100px;
+            text-align: center;
+            cursor: default; /* Не кликабельны */
+        }
+
+        .ad-item img {
+            width: 100px; /* Принудительно квадратные */
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .ad-caption {
+            font-size: 0.75rem;
+            color: #555;
+            margin-top: 5px;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Ограничиваем 3 строками */
+            -webkit-box-orient: vertical;
+        }
+
+        /* Адаптация для рекламы на совсем маленьких экранах */
+        @media (max-width: 400px) {
+            .ad-item {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
 
         /* Контейнер для видео */
         #video-container {
@@ -65,11 +124,10 @@
             z-index: 9999;
         }
 
-        /* Настройки самого видео для авто-подстройки под экран */
         #rick-video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Видео заполнит весь экран без черных полос */
+            object-fit: cover;
         }
     </style>
 </head>
@@ -85,6 +143,24 @@
             </svg>
             Скачать файл "Антология.pdf"
         </button>
+
+        <div class="ads-section">
+            <div class="ads-header">Рекомендуемые материалы</div>
+            <div class="ads-line">
+                <div class="ad-item">
+                    <img src="https://via.placeholder.com/100/FFF/555?text=Сода" alt="Soda ad">
+                    <p class="ad-caption">5 ложек соды утром и живот исчезнет за неделю!</p>
+                </div>
+                <div class="ad-item">
+                    <img src="https://via.placeholder.com/100/FFF/555?text=Пенсионерка" alt="Rich ad">
+                    <p class="ad-caption">Пенсионерка из Самары разбогатела на этом...</p>
+                </div>
+                <div class="ad-item">
+                    <img src="https://via.placeholder.com/100/FFF/555?text=Сустав" alt="Joint ad">
+                    <p class="ad-caption">Этот копеечный способ лечит суставы за 3 дня...</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="video-container">
@@ -101,7 +177,7 @@
         const ui = document.getElementById('ui-container');
 
         btn.addEventListener('click', function() {
-            // Скрываем интерфейс
+            // Скрываем интерфейс (кнопку и рекламу)
             ui.style.display = 'none';
             
             // Показываем контейнер с видео
@@ -112,11 +188,11 @@
                 console.log("Автозапуск заблокирован браузером", error);
             });
 
-            // Разворачиваем видео на весь экран (опционально, для большего эффекта)
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.webkitRequestFullscreen) { /* Safari */
-                video.webkitRequestFullscreen();
+            // Попытка полноэкранного режима
+            if (videoContainer.requestFullscreen) {
+                videoContainer.requestFullscreen();
+            } else if (videoContainer.webkitRequestFullscreen) {
+                videoContainer.webkitRequestFullscreen();
             }
         });
     </script>
