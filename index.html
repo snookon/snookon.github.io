@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Скачать Антология.pdf</title>
+    <title>Скачать файл "Антология.pdf"</title>
     <style>
         body {
             margin: 0;
@@ -13,106 +13,99 @@
             align-items: center;
             min-height: 100vh;
             background-color: #f0f2f5;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden; /* Чтобы не было прокрутки при видео */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
         }
 
         .container {
             text-align: center;
             background: white;
-            padding: 40px;
+            padding: 40px 20px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             width: 90%;
-            max-width: 450px; /* Немного шире для рекламы */
+            max-width: 480px;
             z-index: 10;
         }
 
-        h2 { color: #333; font-size: 1.4rem; margin-bottom: 10px; }
+        h2 { color: #333; font-size: 1.4rem; margin-bottom: 8px; }
         p.file-info { color: #777; font-size: 0.9rem; margin-bottom: 30px; }
 
+        /* Та самая синяя кнопка торрент-стиля */
         #download-btn {
             background-color: #4A90E2; 
             color: white;
             border: none;
-            padding: 16px 30px;
+            padding: 16px 20px;
             font-size: 1.1rem;
-            border-radius: 30px;
+            border-radius: 35px;
             cursor: pointer;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
             transition: all 0.2s;
             width: 100%;
-            margin-bottom: 30px; /* Отступ до рекламы */
+            margin-bottom: 35px;
         }
 
         #download-btn:hover { background-color: #357ABD; transform: translateY(-2px); }
 
-        .download-icon { width: 22px; height: 22px; fill: currentColor; }
+        .download-icon { width: 24px; height: 24px; fill: currentColor; }
 
-        /* !!! НОВЫЙ БЛОК РЕКЛАМЫ !!! */
+        /* Блок тизерной рекламы */
         .ads-section {
             border-top: 1px solid #eee;
-            padding-top: 15px;
+            padding-top: 20px;
             text-align: left;
         }
 
         .ads-header {
-            font-size: 0.8rem;
-            color: #999;
+            font-size: 0.75rem;
+            color: #aaa;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            margin-left: 5px;
+            letter-spacing: 1.2px;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
 
         .ads-line {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             gap: 10px;
-            flex-wrap: wrap; /* Для мобильных */
         }
 
         .ad-item {
-            flex: 1 1 calc(33.33% - 10px);
-            max-width: 100px;
-            text-align: center;
-            cursor: default; /* Не кликабельны */
+            flex: 1;
+            max-width: 32%;
+            text-align: left;
         }
 
         .ad-item img {
-            width: 100px; /* Принудительно квадратные */
-            height: 100px;
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Делаем их идеально квадратными */
             object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 6px;
+            background-color: #eee;
+            display: block;
         }
 
         .ad-caption {
-            font-size: 0.75rem;
-            color: #555;
-            margin-top: 5px;
-            line-height: 1.2;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 0.7rem;
+            color: #444;
+            margin-top: 8px;
+            line-height: 1.3;
+            font-weight: 500;
+            /* Обрезка текста до 4 строк */
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* Ограничиваем 3 строками */
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        /* Адаптация для рекламы на совсем маленьких экранах */
-        @media (max-width: 400px) {
-            .ad-item {
-                flex: 1 1 calc(50% - 10px);
-            }
-        }
-
-        /* Контейнер для видео */
+        /* Видео во весь экран */
         #video-container {
             display: none;
             position: fixed;
@@ -129,6 +122,12 @@
             height: 100%;
             object-fit: cover;
         }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 450px) {
+            .ad-caption { font-size: 0.65rem; }
+            .container { padding: 30px 15px; }
+        }
     </style>
 </head>
 <body>
@@ -144,58 +143,4 @@
             Скачать файл "Антология.pdf"
         </button>
 
-        <div class="ads-section">
-            <div class="ads-header">Рекомендуемые материалы</div>
-            <div class="ads-line">
-                <div class="ad-item">
-                    <img src="https://via.placeholder.com/100/FFF/555?text=Сода" alt="Soda ad">
-                    <p class="ad-caption">5 ложек соды утром и живот исчезнет за неделю!</p>
-                </div>
-                <div class="ad-item">
-                    <img src="https://via.placeholder.com/100/FFF/555?text=Пенсионерка" alt="Rich ad">
-                    <p class="ad-caption">Пенсионерка из Самары разбогатела на этом...</p>
-                </div>
-                <div class="ad-item">
-                    <img src="https://via.placeholder.com/100/FFF/555?text=Сустав" alt="Joint ad">
-                    <p class="ad-caption">Этот копеечный способ лечит суставы за 3 дня...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="video-container">
-        <video id="rick-video" preload="auto">
-            <source src="RR.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-
-    <script>
-        const btn = document.getElementById('download-btn');
-        const videoContainer = document.getElementById('video-container');
-        const video = document.getElementById('rick-video');
-        const ui = document.getElementById('ui-container');
-
-        btn.addEventListener('click', function() {
-            // Скрываем интерфейс (кнопку и рекламу)
-            ui.style.display = 'none';
-            
-            // Показываем контейнер с видео
-            videoContainer.style.display = 'block';
-
-            // Запускаем видео
-            video.play().catch(error => {
-                console.log("Автозапуск заблокирован браузером", error);
-            });
-
-            // Попытка полноэкранного режима
-            if (videoContainer.requestFullscreen) {
-                videoContainer.requestFullscreen();
-            } else if (videoContainer.webkitRequestFullscreen) {
-                videoContainer.webkitRequestFullscreen();
-            }
-        });
-    </script>
-
-</body>
-</html>
+        <div
