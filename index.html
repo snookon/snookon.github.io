@@ -3,82 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Антология</title>
+    <title>Скачать Антология.pdf</title>
     <style>
-        /* Здесь мы наводим красоту (CSS) */
+        /* Настройки страницы */
         body {
             margin: 0;
             padding: 0;
-            /* Временный темный деревянный фон из интернета + затемнение */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            font-family: 'Arial', sans-serif; /* Простой шрифт без засечек */
-            
-            /* Делаем так, чтобы всё было по центру экрана */
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Блок-приманка по центру экрана */
+        .container {
             text-align: center;
-        }
-
-        .logo {
-            width: 150px;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 4em; /* Огромный размер */
-            letter-spacing: 20px; /* Расстояние между буквами */
-            margin: 0;
-            font-weight: normal;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 90%;
+            max-width: 400px;
         }
 
         h2 {
-            font-size: 1.2em;
-            letter-spacing: 8px;
-            margin: 20px 0 40px 0;
-            font-weight: normal;
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
         }
 
-        .status {
-            font-size: 1em;
-            color: #cccccc; /* Слегка сероватый цвет */
-            margin-bottom: 60px;
+        /* Текст с фейковым размером файла для убедительности */
+        p.file-info {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
         }
 
-        /* Рисуем три полосочки */
-        .lines {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; /* Расстояние между линиями */
+        /* Нежно-синяя кнопка с закругленными краями */
+        #download-btn {
+            background-color: #4A90E2; 
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px; /* Сильное закругление краев */
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+            transition: background-color 0.2s, transform 0.1s;
+            width: 100%;
         }
 
-        .line {
-            width: 150px;
-            height: 2px;
-            background-color: white;
+        #download-btn:hover {
+            background-color: #357ABD;
+            transform: translateY(-2px);
+        }
+
+        #download-btn:active {
+            transform: translateY(0);
+        }
+
+        /* SVG Иконка стрелочки вниз */
+        .download-icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* Контейнер для полноэкранного видео (скрыт по умолчанию) */
+        #video-wrapper {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: black;
+            z-index: 9999;
+        }
+
+        /* Видео растягивается на весь экран без рамок */
+        #video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-    <img src="https://via.placeholder.com/150/000000/FFFFFF/?text=LOGO" alt="Логотип" class="logo">
-
-    <h1>АНТОЛОГИЯ</h1>
-    
-    <h2>(МОНСТРЫ, ПОЛУЛЮДИ И<br>ЧЕЛОВЕКОПОДОБНЫЕ)</h2>
-    
-    <p class="status">(Находится в процессе написания)</p>
-
-    <div class="lines">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+    <div class="container" id="ui-container">
+        <h2>Файл готов к скачиванию</h2>
+        <p class="file-info">Антология.pdf • 14.2 MB</p>
+        
+        <button id="download-btn">
+            <svg class="download-icon" viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            Скачать файл "Антология.pdf"
+        </button>
     </div>
+
+    <div id="video-wrapper"></div>
+
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function() {
+            // 1. Скрываем карточку с кнопкой
+            document.getElementById('ui-container').style.display = 'none';
+            
+            // 2. Делаем черный фон на весь экран
+            var videoWrapper = document.getElementById('video-wrapper');
+            videoWrapper.style.display = 'block';
+
+            // 3. Вставляем видео. Параметр autoplay=1 запускает его сразу после клика.
+            videoWrapper.innerHTML = '<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0&disablekb=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        });
+    </script>
 
 </body>
 </html>
